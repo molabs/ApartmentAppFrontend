@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-12">
+    <h1>Appartment App</h1>
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <button (click)="addNew()" class="btn btn-primary"><i class="fas fa-plus"></i> New Appartment</button>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row input">
+  <div class="col-12">
+    <app-form-apartments [apartmentData]=selectedApartment *ngIf="showInput" (messageEvent)="receiveMessage($event)"></app-form-apartments>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <h2>Apartments</h2>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Einzugsdatum</th>
+            <th>Straße</th>
+            <th>PLZ</th>
+            <th>Land</th>
+            <th>Kontakt E-Mail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let apartment of apartments" (click)="showInputForm(apartment)">
+            <td>{{ apartment.id }}</td>
+            <td>{{ apartment.enterdate }}</td>
+            <td>{{ apartment.street }}</td>
+            <td>{{ apartment.postcode }}</td>
+            <td>{{ apartment.country }}</td>
+            <td>{{ apartment.contact_email }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

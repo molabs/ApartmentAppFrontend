@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title" *ngIf="!apartmentData.token && !apartmentData.new">Apartment anzeigen</h5>
+    <h5 class="card-title" *ngIf="apartmentData.id && apartmentData.token">Apartment bearbeiten</h5>
+    <h5 class="card-title" *ngIf="!apartmentData.id && apartmentData.token || apartmentData.new">Apartment anlegen</h5>
+
+    <form (ngSubmit)="submitForm()" #apartmentForm="ngForm">
+      <input type="hidden" name="apartmentData.id" [(ngModel)]="apartmentData.id">
+      <div class="form-group">
+        <label for="">Einzugsdatum</label>
+        <input type="text" class="form-control" [(ngModel)]="apartmentData.enterdate" name="apartmentData.enterdate" required [attr.disabled]="disabled?'':null">
+      </div>
+      <div class="form-group">
+        <label for="">Straße</label>
+        <input type="text" class="form-control" [(ngModel)]="apartmentData.street" name="apartmentData.street" required [attr.disabled]="disabled?'':null">
+      </div>
+      <div class="form-group">
+        <label for="">PLZ</label>
+        <input type="text" class="form-control" [(ngModel)]="apartmentData.postcode" name="apartmentData.postcode" required [attr.disabled]="disabled?'':null">
+      </div>
+      <div class="form-group">
+        <label for="">Ort</label>
+        <input type="text" class="form-control" [(ngModel)]="apartmentData.city" name="apartmentData.city" required [attr.disabled]="disabled?'':null">
+      </div>
+      <div class="form-group">
+        <label for="">Land</label>
+        <input type="text" class="form-control" [(ngModel)]="apartmentData.country" name="apartmentData.country" required [attr.disabled]="disabled?'':null">
+      </div>
+      <div class="form-group">
+        <label for="">Kontakt E-Mail</label>
+        <input type="text" class="form-control" [(ngModel)]="apartmentData.contact_email" name="apartmentData.contact_email" required [attr.disabled]="disabled?'':null">
+      </div>
+      <div class="form-group" *ngIf="apartmentData.token">
+        <label for="">Token</label>
+        <input type="text" class="form-control" [(ngModel)]="apartmentData.token" name="apartmentData.token" disabled>
+      </div>
+      <div>
+        <button type="button" class="btn btn-danger" (click)="deleteApartment()" *ngIf="apartmentData.id && apartmentData.token"><i class="fas fa-trash"></i> Löschen</button>
+        <button type="button" class="btn btn-primary" (click)="cancel()"><i class="fas fa-ban"></i> Cancel</button>
+        <button type="submit" class="btn btn-primary" value="Speichern" *ngIf="!apartmentData.id && apartmentData.token || apartmentData.new" [disabled]="!apartmentForm.form.valid"><i class="fas fa-save"></i> Add</button>
+        <button type="submit" class="btn btn-primary" value="Speichern" *ngIf="apartmentData.id && apartmentData.token" [disabled]="!apartmentForm.form.valid"><i class="fas fa-save"></i> Edit</button>
+      </div>
+      <div>
+        {{errorMessage}}
+      </div>
+    </form>
+  </div>
+</div>
