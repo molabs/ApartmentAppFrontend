@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  webServiceUrl: "webServiceUrl"
+  webServiceUrl: "http://animus.moritz-cichon.de"
 };
