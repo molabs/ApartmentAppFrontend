@@ -16,6 +16,8 @@ Installing
 
   * Open your Browser, enter http://localhost:4200/
 
+  * If you want to host your own webservice (https://github.com/molabs/ApartmentAppBackend ), please update the environment files in src/environments
+
 Dependencies and Modules
 --------------
 
@@ -41,12 +43,12 @@ The following commands can be used for building / execution:
 Building the frontend, the most important steps
 --------------
 
-  * **ng new animus-frontend**
+  * ng new animus-frontend
 
-  * **ng generate component components/listApartments**
+  * ng generate component components/listApartments
 
-  * **ng generate component components/formApartments**
+  * ng generate component components/formApartments
 
-  * **ng generate service services/rest**
+  * ng generate service services/rest
 
-  * **npm install --save bootstrap@next**
+  * npm install --save bootstrap@next
